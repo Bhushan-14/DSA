@@ -1,4 +1,6 @@
 package Array;
+import java.util.Scanner;
+
 public class RemoveDuplicates {
     public static int removeDuplicates(int[] nums) {
         if (nums.length == 0) {
@@ -16,22 +18,24 @@ public class RemoveDuplicates {
     }
 
     public static void main(String[] args) {
-        int[] nums1 = {1, 1, 2};
-        int[] expectedNums1 = {1, 2};
-        int k1 = removeDuplicates(nums1);
-        assert k1 == expectedNums1.length;
-        for (int i = 0; i < k1; i++) {
-            assert nums1[i] == expectedNums1[i];
-        }
-        System.out.println("Test Case 1 Passed!");
+        Scanner scanner = new Scanner(System.in);
 
-        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
-        int[] expectedNums2 = {0, 1, 2, 3, 4};
-        int k2 = removeDuplicates(nums2);
-        assert k2 == expectedNums2.length;
-        for (int i = 0; i < k2; i++) {
-            assert nums2[i] == expectedNums2[i];
+        System.out.print("Enter the length of the array: ");
+        int length = scanner.nextInt();
+
+        int[] nums = new int[length];
+        System.out.println("Enter the elements of the array:");
+        for (int i = 0; i < length; i++) {
+            nums[i] = scanner.nextInt();
         }
-        System.out.println("Test Case 2 Passed!");
+
+        int k = removeDuplicates(nums);
+
+        System.out.println("Unique elements in the array:");
+        for (int i = 0; i < k; i++) {
+            System.out.print(nums[i] + " ");
+        }
+
+        scanner.close();
     }
 }
