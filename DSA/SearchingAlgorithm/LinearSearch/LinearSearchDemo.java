@@ -30,6 +30,10 @@ public class LinearSearchDemo {
 
     // Linear Search
     static int linearSearch(int[] arr, int target) {
+        if (arr.length == 0) {
+            System.out.println("Array does not contain anything");
+        }
+
         for (int index = 0; index < arr.length; index++) {
             if (arr[index] == target) {
                 return index;
