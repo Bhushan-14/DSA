@@ -21,7 +21,7 @@ public class BubbleSortDemo {
 
         bubbleSort(arr);
 
-        System.out.println("Sorted array is: " + Arrays.toString(arr));
+        System.out.println("Sorted(Bubble) array is: " + Arrays.toString(arr));
     }
 
     static void bubbleSort(int arr[]) {
