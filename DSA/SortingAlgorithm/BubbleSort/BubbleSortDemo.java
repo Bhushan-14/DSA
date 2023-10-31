@@ -7,40 +7,44 @@ public class BubbleSortDemo {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Enter limit of an array: ");
+        System.out.println("Enter the size of the array: ");
         int n = sc.nextInt();
 
         int[] arr = new int[n];
 
-        System.out.println("Array elements are: ");
-        for (int i = 0; i < arr.length; i++){
+        System.out.println("Enter array elements: ");
+        for (int i = 0; i < arr.length; i++) {
             arr[i] = sc.nextInt();
         }
 
-        System.out.println("Entered array is: "+Arrays.toString(arr));
+        System.out.println("Entered array is: " + Arrays.toString(arr));
 
-        System.out.printf("Sorted array is: ");
         bubbleSort(arr);
+
+        System.out.println("Sorted array is: " + Arrays.toString(arr));
     }
-    static void bubbleSort(int arr[]){
+
+    static void bubbleSort(int arr[]) {
         boolean swap;
-        //run the step n-1 times
-        for(int i = 0; i < arr.length; i++){
+        // Run the step n-1 times
+        for (int i = 0; i < arr.length - 1; i++) {
             swap = false;
-            for( int j = 1; j < arr.length - i; j++){
-                if (arr[i] < arr[j-1]){
+            for (int j = 0; j < arr.length - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
                     int temp = arr[j];
-                    arr[j] = arr[j-1];
-                    arr[j-1] = temp;
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
                     swap = true;
                 }
             }
-            if(!swap){
+            if (!swap) {
+                // If no two elements were swapped in inner loop, the array is already sorted.
                 break;
             }
         }
     }
 }
+
 /*
 Sorting algorithm is sort array step by step.
 Every step in sorting algorithm is differed bby each other.
