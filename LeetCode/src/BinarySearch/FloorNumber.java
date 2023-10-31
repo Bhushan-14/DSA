@@ -2,7 +2,7 @@ package BinarySearch;
 
 import java.util.Scanner;
 
-public class CeilingOfNumber {
+public class FloorNumber {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -18,25 +18,25 @@ public class CeilingOfNumber {
         System.out.print("Enter the target element to search for: ");
         int target = scanner.nextInt();
 
-        int ans = cieling(arr,target);
+        int ans = Floor(arr,target);
 
-        System.out.println("Ceiling number is "+arr[ans]+" for target "+target+" is found at "+ans);
+        System.out.println("Floor number is "+arr[ans]+" for target "+target+" is found at "+ans);
 
     }
 
     //return the smallest number which is greater than target element(Ceiling number)
-    static int cieling(int[] arr, int target){
+    static int Floor(int[] arr, int target){
         //if target element is the greatest element in array then
-        if(target > arr[arr.length - 1]){
-            return -1;
-        }
+//        if(target > arr[arr.length - 1]){
+//            return -1;
+//        }
         //if target is the smallest number in array
         int start = 0;
         int end = arr.length -1;
         while (start <= end){
             int middle = start + ((end - start) / 2);
 
-           if(target < arr[middle]){
+            if(target < arr[middle]){
                 end = middle - 1;
             }
             else if (target > arr[middle]){
@@ -46,15 +46,16 @@ public class CeilingOfNumber {
                 return middle;
             }
         }
-        return start;
+        return end;
     }
 }
+
 /*
-Ceiling = the smallest number in array greater or equal to target
+ floor = the greatest element which smaller or equal to target element
 
     arr = {2, 3, 5, 9, 14, 16, 18}
-    Ceiling(arr, target = 14) = 14
-    Ceiling(arr, target = 15) = 16
-    Ceiling(arr, target =  4) = 5
-    Ceiling(arr, target =  9) = 9
+    Floor(arr, target = 14) = 14
+    Floor(arr, target = 15) = 14
+    Floor(arr, target =  4) = 3
+    Floor(arr, target =  9) = 9
  */
