@@ -26,11 +26,6 @@ public class FloorNumber {
 
     //return the smallest number which is greater than target element(Ceiling number)
     static int Floor(int[] arr, int target){
-        //if target element is the greatest element in array then
-//        if(target > arr[arr.length - 1]){
-//            return -1;
-//        }
-        //if target is the smallest number in array
         int start = 0;
         int end = arr.length -1;
         while (start <= end){
