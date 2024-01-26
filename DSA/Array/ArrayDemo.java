@@ -35,7 +35,6 @@ class ArrayDemo {
         rno = new int[5]; //Actually here object is being created in the memory(Heap).
         //And memory allocation happens at run time is known as dynamic memory allocation.
 
-
         System.out.println(rno[1]);
     }
 }
