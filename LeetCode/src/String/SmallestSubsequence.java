@@ -1,6 +1,15 @@
+package String;
+
 import java.util.*;
 
-class Solution {
+public class SmallestSubsequence {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter s String: ");
+        String s = sc.nextLine();
+        String result = smallestSubsequence(s);
+        System.out.println("Output: " + result);
+    }
     public static String smallestSubsequence(String s) {
         HashMap<Character, Integer> lastOccurrence = new HashMap<>();
         Stack<Character> stack = new Stack<>();
@@ -29,11 +38,4 @@ class Solution {
         return result.toString();
     }
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter s String: ");
-        String s = sc.nextLine();
-        String result = smallestSubsequence(s);
-        System.out.println("Output: " + result);
-    }
 }
