@@ -2,11 +2,11 @@ package LinkedList;
 
 import java.util.Scanner;
 
-class ListNode {
+class Node {
     int val;
-    ListNode next;
+    Node1 next;
 
-    ListNode(int val) {
+    Node(int val) {
         this.val = val;
     }
 }
@@ -19,12 +19,12 @@ public class SwapNodesInPairs {
         int n = scanner.nextInt();
 
         System.out.println("Enter the elements of the linked list:");
-        ListNode head = createLinkedList(scanner, n);
+        Node1 head = createLinkedList(scanner, n);
 
         System.out.println("\nOriginal Linked List:");
         printLinkedList(head);
 
-        ListNode result = swapPairs(head);
+        Node1 result = swapPairs(head);
 
         System.out.println("\nLinked List after swapping pairs:");
         printLinkedList(result);
@@ -32,20 +32,20 @@ public class SwapNodesInPairs {
         scanner.close();
     }
 
-    public static ListNode createLinkedList(Scanner scanner, int n) {
-        ListNode dummy = new ListNode(0);
-        ListNode current = dummy;
+    public static Node1 createLinkedList(Scanner scanner, int n) {
+        Node1 dummy = new Node1(0);
+        Node1 current = dummy;
 
         for (int i = 0; i < n; i++) {
             int val = scanner.nextInt();
-            current.next = new ListNode(val);
+            current.next = new Node1(val);
             current = current.next;
         }
 
         return dummy.next;
     }
 
-    public static void printLinkedList(ListNode head) {
+    public static void printLinkedList(Node1 head) {
         while (head != null) {
             System.out.print(head.val + " ");
             head = head.next;
@@ -53,16 +53,16 @@ public class SwapNodesInPairs {
         System.out.println();
     }
 
-    public static ListNode swapPairs(ListNode head) {
-        ListNode dummy = new ListNode(0);
+    public static Node1 swapPairs(Node1 head) {
+        Node1 dummy = new Node1(0);
         dummy.next = head;
 
-        ListNode prev = dummy;
-        ListNode current = head;
+        Node1 prev = dummy;
+        Node1 current = head;
 
         while (current != null && current.next != null) {
-            ListNode first = current;
-            ListNode second = current.next;
+            Node1 first = current;
+            Node1 second = current.next;
 
             prev.next = second;
             first.next = second.next;

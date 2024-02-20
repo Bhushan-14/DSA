@@ -2,65 +2,102 @@ package Stack;
 
 import java.util.Scanner;
 
-public class Main {
-    static class Stack {
-        private int maxSize;
-        private int[] stackArray;
-        private int top;
+class StackImplementation{
+    protected int[] data;
+    private static final int DEFAULT_SIZE = 10;
 
-        public Stack(int size) {
-            maxSize = size;
-            stackArray = new int[maxSize];
-            top = -1;
+    public StackImplementation(){
+        this(DEFAULT_SIZE);
+    }
+    public StackImplementation(int size) {
+        this.data = new int[size];
+    }
+    int ptr = -1;
+    public boolean insertElement(int item){
+        if(isFull()){
+            System.out.println("Stack is Full");
+            return false;
         }
-
-        public void push(int value) {
-            if (top < maxSize - 1) {
-                stackArray[++top] = value;
-                System.out.println("Pushed " + value + " onto the stack");
-            } else {
-                System.out.println("Stack overflow! Cannot push " + value);
-            }
-        }
-
-        public int pop() {
-            if (top >= 0) {
-                int poppedValue = stackArray[top--];
-                System.out.println("Popped " + poppedValue + " from the stack");
-                return poppedValue;
-            } else {
-                System.out.println("Stack underflow! Cannot pop from an empty stack");
-                return -1;
-            }
-        }
-
-        public int isEmpty(){
-            return top = -1;
-        }
-        public boolean isFull() {
-            return top == maxSize - 1;
-        }
+        ptr++;
+        data[ptr] = item;
+        return true;
     }
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Enter the size of the stack: ");
-        int stackSize = scanner.nextInt();
-        Stack stack = new Stack(stackSize);
-
-        while (true) {
-            System.out.print("Enter a value to push onto the stack (or enter -1 to pop, or enter -2 to exit): ");
-            int value = scanner.nextInt();
-
-            if (value == -2) {
-                break;
-            } else if (value == -1) {
-                stack.pop();
-            } else {
-                stack.push(value);
-            }
+    public int pop() throws Exception {
+        if(isEmpty()){
+            throw new Exception("Can not pop from empty stack");
         }
-        scanner.close();
+        int removed = data[ptr];
+        ptr--;
+        return removed;
+
+    }
+    public int peek()throws Exception {
+        if(isEmpty()){
+            throw new Exception("Can not peek from empty stack");
+        }
+        return data[ptr];
+    }
+    public boolean isFull() {
+        return ptr == data.length - 1;
+    }
+    public boolean isEmpty() {
+        return ptr == -1;
+    }
+
+}
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        StackImplementation stackImplementation = new StackImplementation();
+        int choice;
+        do {
+            System.out.println("\nChoose an operation:");
+            System.out.println("1. Push");
+            System.out.println("2. Pop");
+            System.out.println("3. Peek");
+            System.out.println("4. Exit");
+            System.out.print("Enter your choice: ");
+
+            choice = sc.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter number of elements to push: ");
+                    int numElementsToPush = sc.nextInt();
+                    System.out.print("Enter elements to push: ");
+                    for (int i = 0; i < numElementsToPush; i++) {
+                        int elementToPush = sc.nextInt();
+                        stackImplementation.insertElement(elementToPush);
+                    }
+                    break;
+
+                case 2:
+                    try {
+                        int poppedElement = stackImplementation.pop();
+                        System.out.println("Popped element: " + poppedElement);
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                    break;
+
+                case 3:
+                    try {
+                        int peekedElement = stackImplementation.peek();
+                        System.out.println("Peeked element: " + peekedElement);
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                    break;
+
+                case 4:
+                    System.out.println("Exiting the program.");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice. Please choose again.");
+            }
+
+        } while (choice != 4);
     }
 }

@@ -67,6 +67,36 @@ public class Main {
         size++;
     }
 
+    public int deleteLast() {
+        if (size <= 1) {
+            int data = head.value;
+            head = tail = null;
+            size = 0;
+            return data;
+        }
+        Node temp = head;
+        while (temp.next != tail) {
+            temp = temp.next;
+        }
+        int data = tail.value;
+        temp.next = null;
+        tail = temp;
+        size--;
+        return data;
+    }
+
+    public void sortList() {
+        for (Node i = head; i != null; i = i.next) {
+            for (Node j = i.next; j != null; j = j.next) {
+                if (i.value > j.value) {
+                    int temp = i.value;
+                    i.value = j.value;
+                    j.value = temp;
+                }
+            }
+        }
+    }
+
     public void printList() {
         Node temp = head;
         while (temp != null) {
@@ -87,16 +117,24 @@ public class Main {
             int element = sc.nextInt();
             linkedList.addNode(element);
         }
+
         System.out.println("Enter item to insert at last of linked list: ");
         int element = sc.nextInt();
         linkedList.insertLast(element);
+
         System.out.println("Enter item to insert after index: ");
         int element1 = sc.nextInt();
         System.out.println("Enter index: ");
         int index = sc.nextInt();
-        linkedList.insertAfterElement(element1,index);
+        linkedList.insertAfterElement(element1, index);
 
-        System.out.println("Entered list is: ");
+        System.out.println("Entered list: ");
+        linkedList.printList();
+
+        int deletedValue = linkedList.deleteLast();
+        System.out.println("Deleted last element: " + deletedValue);
+
+        System.out.println("Entered list: ");
         linkedList.printList();
     }
 }

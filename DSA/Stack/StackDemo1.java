@@ -4,21 +4,17 @@ import java.util.Scanner;
 import java.util.Stack;
 public class StackDemo1 {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter the number of elements: ");
-        int numberOfElements = scanner.nextInt();
-        Stack<String> stack = new Stack<>();
-        for (int i = 0; i < numberOfElements; i++) {
-            System.out.print("Enter element " + (i + 1) + ": ");
-            String element = scanner.next();
+        Scanner sc = new Scanner(System.in);
+        Stack<Integer> stack = new Stack<>();
+        System.out.println("Enter element in stack(Push operation): ");
+        for (int i = 0; i < 5; i++) {
+            int element = sc.nextInt();
             stack.push(element);
         }
-        System.out.println("Elements in the stack: " + stack);
-        for (int i = 0; i < numberOfElements; i++) {
-            stack.pop();
-            System.out.println("Elements in the stack after popping: " + stack);
+        System.out.println(stack);
+        System.out.println("Pop operation: ");
+        for (int i = 0; i < 5; i++) {
+            System.out.println(stack.pop());
         }
-
-        scanner.close();
     }
 }
