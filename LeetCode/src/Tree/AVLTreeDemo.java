@@ -1,5 +1,7 @@
 package Tree;
 
+import java.util.Scanner;
+
 public class AVLTreeDemo {
 
     public class Node {
@@ -39,6 +41,7 @@ public class AVLTreeDemo {
 
     public void insert(int value) {
         root = insert(value, root);
+        displayAndBalance();
     }
 
     private Node insert(int value, Node node) {
@@ -56,24 +59,18 @@ public class AVLTreeDemo {
 
     private Node rotate(Node node) {
         if (node.balanceFactor() > 1) {
-            // Left heavy
             if (node.left.balanceFactor() >= 0) {
-                // Left-left case
                 return rightRotate(node);
             } else {
-                // Left-right case
                 node.left = leftRotate(node.left);
                 return rightRotate(node);
             }
         }
 
         if (node.balanceFactor() < -1) {
-            // Right heavy
             if (node.right.balanceFactor() <= 0) {
-                // Right-right case
                 return leftRotate(node);
             } else {
-                // Right-left case
                 node.right = rightRotate(node.right);
                 return leftRotate(node);
             }
@@ -151,19 +148,31 @@ public class AVLTreeDemo {
         return node == null || (Math.abs(height(node.left) - height(node.right)) <= 1 && balanced(node.left) && balanced(node.right));
     }
 
+    private void displayAndBalance() {
+        System.out.println("AVL Tree structure:");
+        display(root, "Root Node: ");
+        System.out.println("Is AVL Tree balanced? " + balanced());
+        System.out.println();
+    }
+
     public static void main(String[] args) {
         AVLTreeDemo avlTree = new AVLTreeDemo();
+        Scanner scanner = new Scanner(System.in);
 
-        int[] nums = {30, 20, 40, 10, 25, 35, 50};
+        System.out.println("Enter values to insert into AVL tree (separated by spaces):");
+        String input = scanner.nextLine();
+        String[] values = input.split("\\s+");
 
-        // Populating AVL tree
-        avlTree.populate(nums);
+        for (String value : values) {
+            try {
+                int intValue = Integer.parseInt(value);
+                avlTree.insert(intValue);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter integers only.");
+                return;
+            }
+        }
 
-        // Displaying AVL tree
-        System.out.println("AVL Tree structure:");
-        avlTree.display();
-
-        // Checking if AVL tree is balanced
-        System.out.println("\nIs AVL Tree balanced? " + avlTree.balanced());
+        scanner.close();
     }
 }
