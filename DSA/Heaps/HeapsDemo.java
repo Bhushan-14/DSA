@@ -1,5 +1,7 @@
 package Heaps;
 
+import Array.ArrayLists;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -64,6 +66,18 @@ class Heap<T extends Comparable<T>> {
             downheap(min);
         }
     }
+    public ArrayList<T> heapSort() {
+        ArrayList<T> sortedData = new ArrayList<>();
+        try {
+            while (!list.isEmpty()) {
+                sortedData.add(remove());
+            }
+        } catch (Exception e) {
+           System.out.println(e.getMessage());
+        }
+        return sortedData;
+    }
+
 }
 
 public class HeapsDemo {
@@ -74,7 +88,9 @@ public class HeapsDemo {
             System.out.println("Choose an Option: ");
             System.out.println("1. Insertion: ");
             System.out.println("2. Remove: ");
-            System.out.println("3. Exit: ");
+            System.out.println("3. Heap Sort: ");
+            System.out.println("4. Exit");
+            System.out.println("Enter your choice: 4");
             int choice = sc.nextInt();
             switch (choice){
                 case 1:
@@ -91,6 +107,9 @@ public class HeapsDemo {
                     }
                     break;
                 case 3:
+                    System.out.println("Heap Sort: "+heap.heapSort());
+                    break;
+                case 4:
                     System.out.println("Exiting the program.");
                     sc.close();
                     System.exit(0);
