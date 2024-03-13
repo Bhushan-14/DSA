@@ -99,10 +99,10 @@ public class HeapsDemo {
                     heap.insert(insertValue);
                     break;
                 case 2:
-                    try {
+                    try{
                         int removedElement = heap.remove();
                         System.out.println("Removed element: " + removedElement);
-                    } catch (Exception e) {
+                    }catch (Exception e) {
                         System.out.println(e.getMessage());
                     }
                     break;
