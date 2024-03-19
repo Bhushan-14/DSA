@@ -1,4 +1,4 @@
-package Hashmap.Hashtable;
+package Map.Hashmap;
 
 import java.util.Scanner;
 
