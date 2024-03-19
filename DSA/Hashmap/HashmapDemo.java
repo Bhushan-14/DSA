@@ -1,18 +1,31 @@
 package Hashmap;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class HashmapDemo {
     public static void main(String[] args) {
-        HashMap<String, Integer> hm = new HashMap<>();
-        hm.put("Sagar",19);
-        hm.put("Mayur",20);
-        hm.put("Hrishi",19);
-        for (Map.Entry<String, Integer> e : hm.entrySet()) {
-            System.out.println("Key: " + e.getKey()
-                    + " Value: " + e.getValue());
-        }
-        System.out.println("Key: "+hm.get("Sagar"));
-    }
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put("Sagar",19);
+        map.put("Karan",18);
+        map.put("Hrishi",20);
+        System.out.println(map);
+        System.out.println(map.containsKey("Sagar"));
+
+        HashSet<Integer> set = new HashSet<>();
+        set.add(23);
+        set.add(45);
+        set.add(32);
+        set.add(23);
+        System.out.println(set);
+
+        TreeMap<String, Integer> treeMap = new TreeMap<>();
+        treeMap.put("Sagar",19);
+        treeMap.put("Karan",18);
+        treeMap.put("Hrishi",20);
+        System.out.println(treeMap);
+
+    }                                                                                                           
 }
