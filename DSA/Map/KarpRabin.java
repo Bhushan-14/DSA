@@ -45,6 +45,11 @@ public class KarpRabin {
 
     public static void main(String[] args) {
         KarpRabin karpRabin = new KarpRabin();
-        karpRabin.search("SagarKunalRahul", "Kunal");
+        karpRabin.search("Sagarkunalkahul", "kunal");
     }
 }
+
+
+
+
+
