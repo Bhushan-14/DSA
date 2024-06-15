@@ -1,20 +1,19 @@
 package Map;
 
 import java.util.Scanner;
-
 public class KarpRabin {
     private final int PRIME = 101;
 
     private long calculateHash(String str) {
         long hash = 0;
         for (int i = 0; i < str.length(); i++) {
-            hash = (long) (hash + str.charAt(i) * Math.pow(PRIME, i));
+            hash = (hash * PRIME + str.charAt(i)) % Integer.MAX_VALUE;
         }
         return hash;
     }
 
     private long updateHash(long prevHash, char oldChar, char newChar, int patternLength) {
-        long newHash = prevHash - (oldChar * power(PRIME, patternLength - 1)) % Integer.MAX_VALUE;
+        long newHash = (prevHash - (oldChar * power(PRIME, patternLength - 1) % Integer.MAX_VALUE) + Integer.MAX_VALUE) % Integer.MAX_VALUE;
         newHash = (newHash * PRIME + newChar) % Integer.MAX_VALUE;
         return newHash;
     }
@@ -44,12 +43,12 @@ public class KarpRabin {
     }
 
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         KarpRabin karpRabin = new KarpRabin();
-        karpRabin.search("Sagarkunalkahul", "kunal");
+        System.out.print("Enter the text: ");
+        String text = sc.nextLine();
+        System.out.print("Enter the pattern: ");
+        String pattern = sc.nextLine();
+        karpRabin.search(text, pattern);
     }
 }
-
-
-
-
-
