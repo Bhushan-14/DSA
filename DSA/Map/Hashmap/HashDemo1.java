@@ -40,7 +40,8 @@ class MapUsingHash {
     }
 }
 
-public class HashDemo1 {
+public class
+HashDemo1 {
     public static void main(String[] args) {
         MapUsingHash mapUsingHash = new MapUsingHash();
         Scanner scanner = new Scanner(System.in);
